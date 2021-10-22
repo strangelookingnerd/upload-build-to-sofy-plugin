@@ -1,0 +1,2 @@
+_extends: .github
+tag-template: Upload-Build-To-Sofy-$NEXT_MINOR_VERSION
