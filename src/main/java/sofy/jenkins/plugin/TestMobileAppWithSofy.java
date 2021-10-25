@@ -1,7 +1,7 @@
 package sofy.jenkins.plugin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import javax.ws.rs.POST;
 import hudson.Util;
 import org.acegisecurity.AccessDeniedException;
 import hudson.util.Secret;
@@ -156,7 +156,7 @@ public class TestMobileAppWithSofy extends Recorder {
             return "Upload application build to Sofy.ai";
         }
 
-
+        @POST
         public FormValidation doCheckAuthTokenValidity(@QueryParameter("apiToken") final String apiToken) throws AccessDeniedException {
 
             try {
