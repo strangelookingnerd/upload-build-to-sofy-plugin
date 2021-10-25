@@ -44,15 +44,14 @@ import java.util.UUID;
 
 public class TestMobileAppWithSofy extends Recorder {
 
-    private String apiToken;
+    private Secret apiToken;
     private String buildPath;
-    private Secret secret;
 //    private CreateMobileTestRunResponse testRunResponse;
 
     @DataBoundConstructor
-    public TestMobileAppWithSofy(String apiToken, String apkPath) {
+    public TestMobileAppWithSofy(Secret apiToken, String apkPath) {
         this.buildPath = apkPath;
-        this.apiToken = Secret.fromString(apiToken).getEncryptedValue();
+        this.apiToken = apiToken;
     }
 
     @Override
@@ -79,14 +78,14 @@ public class TestMobileAppWithSofy extends Recorder {
         CloseableHttpClient client = HttpClientBuilder.create().build();
         HttpPost httppost = new HttpPost("https://api.sofy.ai/api/AppTests/buildUpload");
         // set Subscription Key
-        String subKey = this.apiToken;
+        
         try {
-            subKey = UUID.fromString(Secret.fromString(this.apiToken).getPlainText()).toString();
+            
         } catch (Exception e) {
             e.printStackTrace();
             logger.println("Invalid API Key, unable to Stage test run on Sofy.ai. Please refresh your API Key");
         }
-        httppost.setHeader("SubscriptionKey", subKey);
+        httppost.setHeader("SubscriptionKey", this.apiToken.getPlainText());
         // Upload APK
         File buildHandle = null;
         try {
