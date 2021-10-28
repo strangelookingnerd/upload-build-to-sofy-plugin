@@ -141,8 +141,6 @@ public class TestMobileAppWithSofy extends Recorder {
     }
 
 
-    @Symbol("Sofy Upload")
-    @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Publisher> {
 
         @Override
