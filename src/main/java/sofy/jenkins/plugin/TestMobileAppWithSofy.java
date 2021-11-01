@@ -140,7 +140,8 @@ public class TestMobileAppWithSofy extends Recorder {
         return BuildStepMonitor.NONE;
     }
 
-
+    @Symbol("Upload-build-to-sofy")
+    @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Publisher> {
 
         @Override
