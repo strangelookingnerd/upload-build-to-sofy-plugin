@@ -60,6 +60,7 @@ public class TestMobileAppWithSofy extends Recorder {
             listener.getLogger().println("Preparing to Upload build to Sofy.");
             String buildLocation = build.getWorkspace() + "/" + this.buildPath;
             String testRunInfo = stageMobileTestRun(listener.getLogger(), buildLocation);
+            listener.getLogger().println(testRunInfo);
 //            if (testRunInfo != null && !testRunInfo.isEmpty()) {
 //                this.testRunResponse = new ObjectMapper().readValue(testRunInfo.replaceAll("[\\[\\]]", ""), CreateMobileTestRunResponse.class);
 //                listener.getLogger().println("Test Run scheduled!");
@@ -102,12 +103,6 @@ public class TestMobileAppWithSofy extends Recorder {
 //                        .filter(file -> file.getName().toLowerCase().endsWith(".apk") || file.getName().toLowerCase().endsWith(".ipa"))
                         .findFirst()
                         .orElse(null);
-            }
-
-            if (buildHandle == null  ) {
-                logger.println("Invalid Build location provided. No '.apk'  or '.ipa' file found in provided directory: \"" + (buildHandle == null ? "" : buildHandle.getAbsolutePath()) + "\"");
-                logger.println("Unable to upload build at Sofy");
-                return "";
             }
 
         } catch (Exception e) {
