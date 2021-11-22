@@ -10,12 +10,12 @@
 
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>upload-build-to-sofy</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
 
     <packaging>hpi</packaging>
     
     <properties>
-    	<revision>24.0.1</revision>
+    	<revision>25.0.1</revision>
         <changelist>-SNAPSHOT</changelist>
         <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
         <jenkins.version>2.277.1</jenkins.version>
